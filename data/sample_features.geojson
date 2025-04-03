@@ -1,0 +1,50 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1,
+        "name": "Punto Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-101.1744, 22.2393]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2,
+        "name": "Línea de Ejemplo"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-101.1744, 22.2393],
+          [-101.1800, 22.2400],
+          [-101.1850, 22.2450]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3,
+        "name": "Polígono de Ejemplo"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-101.1744, 22.2393],
+            [-101.1800, 22.2393],
+            [-101.1800, 22.2450],
+            [-101.1744, 22.2450],
+            [-101.1744, 22.2393]
+          ]
+        ]
+      }
+    }
+  ]
+}

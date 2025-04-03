@@ -1,0 +1,27 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Punto de Muestra 1",
+        "description": "Este es un punto de prueba."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-101.1744, 22.2393]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Punto de Muestra 2",
+        "description": "Este es otro punto de prueba."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-101.1800, 22.2450]
+      }
+    }
+  ]
+}
