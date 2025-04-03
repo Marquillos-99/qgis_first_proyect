@@ -23,6 +23,11 @@ const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
 directionalLight.position.set(100, 100, 100);
 scene.add(directionalLight);
 
+// Punto de luz adicional para mejorar la iluminación
+const pointLight = new THREE.PointLight(0xffffff, 1, 2000);
+pointLight.position.set(500, 500, 500);
+scene.add(pointLight);
+
 // Controles de cámara (OrbitControls)
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
@@ -68,7 +73,7 @@ function addGeoJSONToScene(geojson) {
       const geometry = new THREE.SphereGeometry(10, 16, 16);
       const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
       object = new THREE.Mesh(geometry, material);
-      object.position.set(pointXY.x, pointXY.y, 0);
+      object.position.set(pointXY.x, pointXY.y, 50); // Elevamos los puntos para que se vean en 3D
     } else if (type === "LineString") {
       const points = coords.map((coord) => {
         const pt = convertGeoToXY(coord[0], coord[1]);
@@ -86,7 +91,7 @@ function addGeoJSONToScene(geojson) {
         const pt = convertGeoToXY(ring[i][0], ring[i][1]);
         shape.lineTo(pt.x, pt.y);
       }
-      const extrudeSettings = { depth: 50, bevelEnabled: false };
+      const extrudeSettings = { depth: 100, bevelEnabled: false };
       const geometry = new THREE.ExtrudeGeometry(shape, extrudeSettings);
       const material = new THREE.MeshBasicMaterial({
         color: 0x00ff00,
@@ -107,11 +112,11 @@ function addGeoJSONToScene(geojson) {
 // Función para gestionar la visibilidad de los objetos
 function toggleVisibility() {
   scene.children.forEach((object) => {
-    if (object.userData.type === "Point") {
+    if (object.userData?.type === "Point") {
       object.visible = document.getElementById("showPoints").checked;
-    } else if (object.userData.type === "LineString") {
+    } else if (object.userData?.type === "LineString") {
       object.visible = document.getElementById("showLines").checked;
-    } else if (object.userData.type === "Polygon") {
+    } else if (object.userData?.type === "Polygon") {
       object.visible = document.getElementById("showPolygons").checked;
     }
   });
